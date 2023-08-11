@@ -5,5 +5,9 @@ SOURCES=main.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=main.out
 all: $(SOURCES) $(EXECUTABLE)
-main.o: main.cpp
-	$(CC) $(CFLAGS) main.cpp
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
